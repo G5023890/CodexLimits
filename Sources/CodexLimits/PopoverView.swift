@@ -13,7 +13,7 @@ struct PopoverView: View {
             secondaryCard
             footer
         }
-        .padding(16)
+        .padding(15)
         .frame(width: 326)
         .background(
             RoundedRectangle(cornerRadius: 18, style: .continuous)
@@ -21,9 +21,9 @@ struct PopoverView: View {
         )
         .overlay {
             RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .strokeBorder(Color.white.opacity(0.12), lineWidth: 0.8)
+                .strokeBorder(Color.white.opacity(0.1), lineWidth: 0.8)
         }
-        .shadow(color: .black.opacity(0.18), radius: 24, x: 0, y: 10)
+        .shadow(color: .black.opacity(0.16), radius: 22, x: 0, y: 10)
     }
 
     private var header: some View {
@@ -55,7 +55,7 @@ struct PopoverView: View {
     }
 
     private var heroGauge: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 14) {
             ZStack {
                 UsageGaugeView(snapshot: store.heroSnapshot, style: .popover, glow: true)
 
@@ -71,7 +71,7 @@ struct PopoverView: View {
                 }
             }
 
-            VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 7) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(store.heroSnapshot.shortWindowTitle)
                         .font(.system(size: 12, weight: .semibold, design: .rounded))
@@ -96,11 +96,11 @@ struct PopoverView: View {
 
             Spacer(minLength: 0)
         }
-        .padding(14)
-        .background(Color.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .padding(13)
+        .background(Color.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .strokeBorder(Color.white.opacity(0.07), lineWidth: 0.8)
+                .strokeBorder(Color.white.opacity(0.055), lineWidth: 0.8)
         }
     }
 
@@ -114,7 +114,7 @@ struct PopoverView: View {
     }
 
     private var secondaryCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 7) {
             HStack(alignment: .firstTextBaseline) {
                 Text(store.primarySnapshot.shortWindowTitle)
                     .font(.system(size: 12, weight: .semibold, design: .rounded))
@@ -135,10 +135,10 @@ struct PopoverView: View {
             }
         }
         .padding(12)
-        .background(Color.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .background(Color.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .strokeBorder(Color.white.opacity(0.06), lineWidth: 0.8)
+                .strokeBorder(Color.white.opacity(0.05), lineWidth: 0.8)
         }
     }
 
@@ -167,11 +167,11 @@ struct PopoverView: View {
                 .minimumScaleFactor(0.75)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(Color.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .padding(11)
+        .background(Color.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .strokeBorder(Color.white.opacity(0.06), lineWidth: 0.8)
+                .strokeBorder(Color.white.opacity(0.05), lineWidth: 0.8)
         }
     }
 
@@ -202,27 +202,27 @@ private struct PopoverActionButtonStyle: ButtonStyle {
         configuration.label
             .font(.system(size: 12, weight: .semibold, design: .rounded))
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 8)
+            .padding(.vertical, 7)
             .background(background(configuration: configuration), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .strokeBorder(borderColor(configuration: configuration), lineWidth: 0.8)
+                    .strokeBorder(borderColor(configuration: configuration), lineWidth: 0.7)
             }
     }
 
     private func background(configuration: Configuration) -> Color {
         if prominent {
-            return Color.accentColor.opacity(configuration.isPressed ? 0.2 : 0.14)
+            return Color.accentColor.opacity(configuration.isPressed ? 0.18 : 0.11)
         }
 
-        return Color.primary.opacity(configuration.isPressed ? 0.1 : 0.05)
+        return Color.primary.opacity(configuration.isPressed ? 0.08 : 0.04)
     }
 
     private func borderColor(configuration: Configuration) -> Color {
         if prominent {
-            return Color.accentColor.opacity(configuration.isPressed ? 0.25 : 0.18)
+            return Color.accentColor.opacity(configuration.isPressed ? 0.22 : 0.14)
         }
 
-        return Color.primary.opacity(configuration.isPressed ? 0.16 : 0.08)
+        return Color.primary.opacity(configuration.isPressed ? 0.12 : 0.06)
     }
 }

@@ -8,7 +8,7 @@ struct UsageGaugeView: View {
         var size: CGFloat {
             switch self {
             case .menuBar:
-                return 18
+                return 16
             case .popover:
                 return 96
             }
@@ -17,7 +17,7 @@ struct UsageGaugeView: View {
         var lineWidth: CGFloat {
             switch self {
             case .menuBar:
-                return 2.6
+                return 2.4
             case .popover:
                 return 8
             }
@@ -35,7 +35,7 @@ struct UsageGaugeView: View {
         var trackOpacity: Double {
             switch self {
             case .menuBar:
-                return 0.15
+                return 0.18
             case .popover:
                 return 0.1
             }
@@ -84,24 +84,24 @@ struct StatusItemView: View {
     let isActive: Bool
 
     var body: some View {
-        HStack(spacing: 6) {
+        HStack(spacing: 5) {
             UsageGaugeView(snapshot: snapshot, style: .menuBar)
 
             Text(snapshot.percentText)
-                .font(.system(size: 11, weight: .semibold, design: .rounded))
+                .font(.system(size: 10.5, weight: .semibold, design: .rounded))
                 .monospacedDigit()
                 .foregroundStyle(.primary)
-                .frame(width: 34, alignment: .leading)
+                .frame(width: 30, alignment: .leading)
         }
-        .padding(.horizontal, 7)
-        .padding(.vertical, 3)
+        .padding(.horizontal, 6)
+        .padding(.vertical, 2)
         .background {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .fill(backgroundColor)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                .strokeBorder(Color.primary.opacity(isActive ? 0.14 : 0.06), lineWidth: 0.5)
+                .strokeBorder(Color.primary.opacity(isActive ? 0.12 : 0.05), lineWidth: 0.5)
         }
         .contentShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
         .accessibilityElement(children: .combine)
@@ -110,6 +110,6 @@ struct StatusItemView: View {
     }
 
     private var backgroundColor: Color {
-        isActive ? Color.primary.opacity(0.12) : Color.clear
+        isActive ? Color.primary.opacity(0.1) : Color.clear
     }
 }
